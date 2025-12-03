@@ -153,7 +153,7 @@ st.sidebar.markdown("### Risk Thresholds (Face Height in Pixels)")
 # HIGH risk threshold (top of hierarchy)
 high_thresh = st.sidebar.number_input(
     "High Risk ≥ (px)",
-    min_value=1,
+    min_value=112,
     max_value=1000,
     value=200,
     step=5,
@@ -163,7 +163,7 @@ high_thresh = st.sidebar.number_input(
 # MEDIUM risk threshold (must be strictly below high_thresh)
 usable_thresh = st.sidebar.number_input(
     "Medium Risk ≥ (px)",
-    min_value=1,
+    min_value=80,
     max_value=high_thresh - 1,
     value=112,
     step=1,
@@ -173,13 +173,22 @@ usable_thresh = st.sidebar.number_input(
 # LOW risk threshold (must be strictly below usable_thresh)
 weak_thresh = st.sidebar.number_input(
     "Low Risk ≥ (px)",
-    min_value=1,
+    min_value=40,
     max_value=usable_thresh - 1,
     value=80,
     step=1,
     help=f"Must be strictly less than the Medium Risk threshold ({usable_thresh})."
 )
 
+# MINIMAL risk threshold (must be strictly below weak_thresh)
+minimal_thresh = st.sidebar.number_input(
+    "Minimal Risk ≥ (px)",
+    min_value=1,
+    max_value=weak_thresh - 1,
+    value=40,
+    step=1,
+    help=f"Must be strictly less than the Weak Risk threshold ({weak_thresh})."
+)
 
 def compute_face_px(resolution_v, fov_v_deg, distance_m, face_height_m):
     """Compute face pixel height using simple geometric projection."""
@@ -190,17 +199,38 @@ def compute_face_px(resolution_v, fov_v_deg, distance_m, face_height_m):
     m_per_px = scene_height_m / resolution_v
     return face_height_m / m_per_px
 
+# def classify_risk(face_px):
+#     if np.isnan(face_px):
+#         return "unknown", 0
+#     if face_px >= high_thresh:
+#         return "high", 3
+#     elif face_px >= usable_thresh:
+#         return "medium", 2
+#     elif face_px >= weak_thresh:
+#         return "low", 1
+#     else:
+#         return "minimal", 0
+
 def classify_risk(face_px):
+    """
+    Returns (risk_label, risk_score)
+    risk_score drives the color scale.
+    """
     if np.isnan(face_px):
         return "unknown", 0
+    # 5-level classification
     if face_px >= high_thresh:
+        return "ultrahigh", 4
+    if usable_thresh <= face_px < high_thresh:
         return "high", 3
-    elif face_px >= usable_thresh:
+    if weak_thresh <= face_px < usable_thresh:
         return "medium", 2
-    elif face_px >= weak_thresh:
+    if minimal_thresh <= face_px < weak_thresh:
         return "low", 1
-    else:
-        return "minimal", 0
+
+    # New category: extremely small face region (<40 px)
+    return "minimal", 0
+
 
 df_devices_f = df_devices_all[
     df_devices_all["brand"].isin(device_filter + (["Custom"] if add_custom_device else []))
@@ -249,12 +279,18 @@ heatmap = (
         color=alt.Color(
             "risk_score:Q",
             scale=alt.Scale(
-                domain=[0, 1, 2, 3],
-                range=["#f0f0f0", "#add8e6", "#ffa500", "#ff0000"]
+                domain=[0, 1, 2, 3, 4],
+                range=[
+                    "#f0f0f0",   # 0 minimal
+                    "#d9d9d9",   # 1 low
+                    "#a6cee3",   # 2 medium
+                    "#fdbf6f",   # 3 high
+                    "#e31a1c"    # 4 ultrahigh
+                    ]
             ),
             legend=alt.Legend(
                 title="Privacy Risk Level",
-                labelExpr="{0:'minimal',1:'low',2:'medium',3:'high'}[datum.value]"
+                labelExpr="{0:'minimal',1:'low',2:'medium',3:'high',4:'ultrahigh'}[datum.value]"
             ),
         ),
         tooltip=[
@@ -279,17 +315,18 @@ st.markdown(
     """
     **Interpretation**
 
-    - **High risk**: face pixel height ≥ high threshold (default 200 px). Conditions are very likely to
+    - **Ultra-high risk**: face pixel height ≥ high threshold (default 200 px). Conditions are very likely to
       support high-quality facial embeddings for modern recognition models.
-    - **Medium risk**: between usable and high thresholds (default 112–199 px). Embeddings are likely usable but
+    - **High risk**: between usable and high thresholds (default 112–199 px). Embeddings are likely usable but
       more sensitive to pose, occlusion, and lighting.
-    - **Low risk**: between weak and usable thresholds (default 80–111 px). Recognition is unstable; embeddings
+    - **Medium risk**: between weak and usable thresholds (default 80–111 px). Recognition is unstable; embeddings
       may fail frequently in real-world conditions.
-    - **Minimal risk**: below weak threshold (default <80 px). Faces may be detectable but typically insufficient
+    - **Low risk**: below weak threshold (default 40-79 px). Faces may be detectable but typically insufficient
       for robust recognition; below ~40 px, even detection often fails.
+    - **Minimal/ultra-low risk**: below ~40 px, even detection can fails (although TinyFace uses 20 by 16 px)
 
     These bands loosely reflect findings from NIST FRVT, ArcFace training resolutions, and small-face detection
-    benchmarks (RetinaFace, SCRFD).
+    benchmarks (TinyFace, etc).
     """
 )
 
