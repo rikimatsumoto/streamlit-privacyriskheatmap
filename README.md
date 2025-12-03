@@ -14,7 +14,7 @@ geometric projection formula, then maps that to a qualitative privacy risk level
 ## Quickstart
 
 ```bash
-# Create and activate a virtual environment (optional but recommended)
+# Create and activate a virtual environment (optional but deff recommended)
 python -m venv .venv
 source .venv/bin/activate  # on Windows: .venv\Scripts\activate
 
@@ -22,7 +22,7 @@ source .venv/bin/activate  # on Windows: .venv\Scripts\activate
 pip install -r requirements.txt
 
 # Run the Streamlit app
-streamlit run app/streamlit_app.py
+streamlit run app/streamlit_app.py # or try this: python -m streamlit run app/streamlit_app.py
 ```
 
 ## Folder Structure
