@@ -6,6 +6,10 @@ import streamlit as st
 import altair as alt
 from pathlib import Path
 
+# with open("style.css") as f:
+#     st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
+
+
 st.set_page_config(
     page_title="Camera privacy risk heatmap",
     layout="wide"
@@ -197,12 +201,6 @@ def classify_risk(face_px):
         return "low", 1
     else:
         return "minimal", 0
-
-# Filter devices
-# df_devices_f = df_devices[
-#     df_devices["brand"].isin(device_filter)
-#     & df_devices["form_factor"].isin(form_factor_filter)
-# ].copy()
 
 df_devices_f = df_devices_all[
     df_devices_all["brand"].isin(device_filter + (["Custom"] if add_custom_device else []))

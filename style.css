@@ -1,0 +1,59 @@
+
+/*  custom CSS */
+
+body, .main, .stApp {
+    background-color: #FAFAFA !important;
+}
+
+h1, h2, h3, h4, h5, h6, p, label, span {
+    color: #1A1A1A !important;
+    font-weight: 400;
+    letter-spacing: -0.2px;
+}
+
+section[data-testid="stSidebar"] {
+    background-color: #FFFFFF !important;
+    border-right: 1px solid #E5E5E5;
+}
+
+.stNumberInput input, .stTextInput input, select {
+    background-color: #FFFFFF !important;
+    color: #1A1A1A !important;
+    border-radius: 8px;
+    border: 1px solid #D9D9D9 !important;
+    padding: 6px 10px;
+}
+
+.stButton > button {
+    background-color: #4C65A8 !important;
+    color: #FFFFFF !important;
+    border-radius: 6px;
+    border: none;
+    padding: 8px 16px;
+}
+
+.stButton > button:hover {
+    background-color: #3B4F86 !important;
+}
+
+.dataframe {
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid #E2E2E2;
+}
+
+.block-container {
+    padding-top: 2rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    max-width: 1100px;
+    margin: auto;
+}
+
+.vega-tooltip {
+    font-size: 12px !important;
+    background-color: #FFFFFF !important;
+    color: #1A1A1A !important;
+    border: 1px solid #E5E5E5 !important;
+    border-radius: 6px !important;
+}
