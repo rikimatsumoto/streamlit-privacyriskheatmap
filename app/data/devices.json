@@ -1,0 +1,74 @@
+[
+  {
+    "device": "Ring Video Doorbell",
+    "brand": "Ring",
+    "form_factor": "doorbell",
+    "resolution_v": 1080,
+    "fov_v_deg": 95,
+    "min_dist_m": 0.8,
+    "max_dist_m": 3.0
+  },
+  {
+    "device": "Ring Floodlight Cam",
+    "brand": "Ring",
+    "form_factor": "floodlight",
+    "resolution_v": 1080,
+    "fov_v_deg": 75,
+    "min_dist_m": 3.0,
+    "max_dist_m": 8.0
+  },
+  {
+    "device": "Nest Doorbell",
+    "brand": "Google Nest",
+    "form_factor": "doorbell",
+    "resolution_v": 1280,
+    "fov_v_deg": 145,
+    "min_dist_m": 0.8,
+    "max_dist_m": 3.0
+  },
+  {
+    "device": "Nest Cam Outdoor/Indoor",
+    "brand": "Google Nest",
+    "form_factor": "outdoor_cam",
+    "resolution_v": 1080,
+    "fov_v_deg": 80,
+    "min_dist_m": 3.0,
+    "max_dist_m": 10.0
+  },
+  {
+    "device": "Eufy 2K Video Doorbell",
+    "brand": "Eufy",
+    "form_factor": "doorbell",
+    "resolution_v": 1536,
+    "fov_v_deg": 120,
+    "min_dist_m": 0.8,
+    "max_dist_m": 4.0
+  },
+  {
+    "device": "Eufy Floodlight Cam 2 Pro",
+    "brand": "Eufy",
+    "form_factor": "floodlight",
+    "resolution_v": 1536,
+    "fov_v_deg": 90,
+    "min_dist_m": 3.0,
+    "max_dist_m": 10.0
+  },
+  {
+    "device": "Wyze Cam v3",
+    "brand": "Wyze",
+    "form_factor": "indoor_outdoor_cam",
+    "resolution_v": 1080,
+    "fov_v_deg": 80,
+    "min_dist_m": 2.0,
+    "max_dist_m": 8.0
+  },
+  {
+    "device": "Arlo Ultra 2 (4K)",
+    "brand": "Arlo",
+    "form_factor": "outdoor_cam",
+    "resolution_v": 2160,
+    "fov_v_deg": 90,
+    "min_dist_m": 3.0,
+    "max_dist_m": 12.0
+  }
+]
