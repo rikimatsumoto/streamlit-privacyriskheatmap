@@ -1,12 +1,12 @@
-# Privacy Risk Heatmap – Smart Camera Facial Embedding Risk
+# Facial embedding risk heatmap
 
-This repo contains a Streamlit app that visualizes **privacy risk** for several popular smart-camera devices
-(Ring, Nest, Eufy, Wyze, Arlo) based on:
+This repo contains a Streamlit app that visualizes **privacy risk** as a heat map for several popular smart-camera devices
+(Ring, Nest, Eufy, Wyze, Arlo). The parameters to calculate privacy risks are:
 
 - Camera **vertical resolution**
 - **Vertical field of view (FOV)**
 - **Distance** from the camera to a subject
-- Research-backed **face pixel thresholds** for facial recognition
+- **Dace pixel thresholds** for facial recognition
 
 The app computes an approximate **face pixel height** for each device–distance combination using a simple
 geometric projection formula, then maps that to a qualitative privacy risk level and displays a heatmap.
@@ -28,7 +28,7 @@ streamlit run app/streamlit_app.py # or try this: python -m streamlit run app/st
 ## Folder Structure
 
 ```text
-privacy_risk_heatmap_app/
+streamlit-privacyriskheatmap/
 ├─ app/
 │  ├─ streamlit_app.py      # Main Streamlit entrypoint
 │  └─ data/
