@@ -4,7 +4,7 @@
     "brand": "Ring",
     "form_factor": "doorbell",
     "resolution_v": 1080,
-    "fov_v_deg": 95,
+    "fov_v_deg": 84,
     "min_dist_m": 0.8,
     "max_dist_m": 3.0
   },
@@ -13,7 +13,7 @@
     "brand": "Ring",
     "form_factor": "floodlight",
     "resolution_v": 1080,
-    "fov_v_deg": 75,
+    "fov_v_deg": 80,
     "min_dist_m": 3.0,
     "max_dist_m": 8.0
   },
@@ -22,7 +22,7 @@
     "brand": "Google Nest",
     "form_factor": "doorbell",
     "resolution_v": 1280,
-    "fov_v_deg": 145,
+    "fov_v_deg": 116,
     "min_dist_m": 0.8,
     "max_dist_m": 3.0
   },
@@ -31,7 +31,7 @@
     "brand": "Google Nest",
     "form_factor": "outdoor_cam",
     "resolution_v": 1080,
-    "fov_v_deg": 80,
+    "fov_v_deg": 75,
     "min_dist_m": 3.0,
     "max_dist_m": 10.0
   },
@@ -39,8 +39,8 @@
     "device": "Eufy 2K Video Doorbell",
     "brand": "Eufy",
     "form_factor": "doorbell",
-    "resolution_v": 1536,
-    "fov_v_deg": 120,
+    "resolution_v": 1200,
+    "fov_v_deg": 100,
     "min_dist_m": 0.8,
     "max_dist_m": 4.0
   },
@@ -48,8 +48,8 @@
     "device": "Eufy Floodlight Cam 2 Pro",
     "brand": "Eufy",
     "form_factor": "floodlight",
-    "resolution_v": 1536,
-    "fov_v_deg": 90,
+    "resolution_v": 1296,
+    "fov_v_deg": 75,
     "min_dist_m": 3.0,
     "max_dist_m": 10.0
   },
