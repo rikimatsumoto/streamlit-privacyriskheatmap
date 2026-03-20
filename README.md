@@ -29,9 +29,6 @@ streamlit-privacyriskheatmap/
 ├─ app/
 │  ├─ streamlit_app.py      # Main Streamlit entrypoint
 │  └─ data/
-├─ src/
-├─ tests/
-├─ config/
 ├─ docs/
 ├─ requirements.txt
 ├─ .gitignore
