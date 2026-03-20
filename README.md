@@ -1,15 +1,12 @@
 # Facial embedding risk heatmap
 
 This repo contains a Streamlit app that visualizes **privacy risk** as a heat map for several popular smart-camera devices
-(Ring, Nest, Eufy, Wyze, Arlo). The parameters to calculate privacy risks are:
+(Ring, Nest, Eufy, Wyze, Arlo). A proxy for privacy risk is computed via approximate face pixel height for each device–distance combination using a simple geometric projection formula, which is then mapped to a qualitative privacy risk level and displayed as a heatmap. The parameters to calculate privacy risks are:
 
 - Camera **vertical resolution**
 - **Vertical field of view (FOV)**
 - **Distance** from the camera to a subject
 - **Dace pixel thresholds** for facial recognition
-
-The app computes an approximate **face pixel height** for each device–distance combination using a simple
-geometric projection formula, then maps that to a qualitative privacy risk level and displays a heatmap.
 
 ## Quickstart
 
